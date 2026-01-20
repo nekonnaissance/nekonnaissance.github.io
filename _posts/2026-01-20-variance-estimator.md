@@ -8,11 +8,20 @@ title: "An Unbiased Variance Estimator"
 
 
 
-Placeholder.
+## Motivation
 
+Why anyone should care. One paragraph. No equations yet.
 
+## The naive estimator
 
-Math will appear here.
+Define the obvious thing.
+Show why it fails.
+One equation max.
 
+## The unbiased estimator
+
+State it cleanly.
+One boxed equation.
+Minimal commentary.
 
 
