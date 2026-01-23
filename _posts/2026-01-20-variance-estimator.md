@@ -133,3 +133,50 @@ Since $\lvert \cos(\alpha) \rvert \leq 1$, this would systematically push the va
 This is precisely the bias we want to avoid.
 
 At this stage, one might suspect that $\frac{1}{n-1}$ is the correct normalization factor when constructing $\widehat{\sigma}^2$. While this is not yet a proof, it already makes clear that using $\frac{1}{n}$ is the wrong choice.
+
+
+
+
+## More Intuition – Case $n = 2$
+
+In this experiment we sample various values of $\mu$ from the interval $[-3, 3]$.
+For each of these means we draw $(X_1, X_2)$ pairs $500$ times, where
+$X_1$ and $X_2$ come from the normal distribution $\mathcal{N}(\mu, 1)$.
+For each pair, we estimate the variance by computing either
+$\widehat{\sigma}^2$ or $\widehat{\sigma}^2_{\mu \text{ known}}$.
+
+We proceed in the same way as in the previous subsection:
+
+- To obtain $\widehat{\sigma}^2_{\mu \text{ known}}$, we compute the distance
+  from $(X_1, X_2)$ to $(\mu, \mu)$.
+- To obtain $\widehat{\sigma}^2$, we compute the distance from the origin to the
+  projection of $(X_1, X_2)$ onto the line $X_1 + X_2 = 0$.
+
+![Projection experiment for $n=2$](/assets/mu_shift.gif)
+
+As the animation shows, both estimators remain constant as $\mu$ varies.
+This is expected: $\widehat{\sigma}^2_{\mu \text{ known}}$ is proportional to
+the distance from the center of the blue mass, so translating it changes nothing,
+while $\widehat{\sigma}^2$ is based on projections, and translating the blue mass
+along the $[1,1]^\top$ direction does not affect its projection.
+
+We observe that the deviation of the red dots is systematically smaller, since one
+direction is removed entirely. This is precisely the geometric origin of the
+$n - 1$ degrees of freedom.
+
+What is the main source of this discrepancy? Consider a blue point
+$\boldsymbol{X} = (4.01, 4.03)$ under $\mu = 2$. Being far from the center of the
+blue mass, it contributes substantially to the average deviation. After
+projection, however, the situation looks different. The same point is mapped to
+$\boldsymbol{P}(\boldsymbol{X}) = (-0.01, 0.01)$, which lies very close to
+$\mathbf{0}$.
+
+This reflects the fact that observing $X_1 = 4.01$ and $X_2 = 4.03$ with $\mu$
+unknown naturally suggests values concentrated around $4$ and a small variance.
+While $n = 2$ hardly constitutes a meaningful sample, this interpretation is at
+least reasonable if one is forced to make a judgment.
+
+To observe a similar effect for larger samples (namely, all measurements clustering
+together while remaining far from the true mean) we would need to be rather unlucky.
+This explains why replacing $\frac{1}{n}$ with $\frac{1}{n-1}$ becomes almost
+irrelevant for large $n$, but crucial when the sample is small.
