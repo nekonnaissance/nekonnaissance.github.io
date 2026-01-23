@@ -336,66 +336,72 @@ $$
 To answer what factor fits an unbiased estimator of variance, we need to calculate the expected value of the expressions above. To this end, we need a supplementary result.
 
 
+::: {.lemma-box}
 
-> {:.lemma-box}
-> **Little Lemma.**  
-> Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
-> $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
-> expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
-> matrix. Then,
->
-> $$
-> \mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
-> =
-> \mu^2 \Sigma_{\boldsymbol{A}}
-> +
-> \sigma^2 \operatorname{tr}(\boldsymbol{A}).
-> $$
->
-> **Proof.**  
-> Unfortunately, we need to simply expand. It doesn't seem like there is anything more clever we could pull off.
->
-> $$
-> \mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
-> =
-> \sum_{i=1}^n \sum_{j=1}^n A_{ij} \mathbf{E} \left[ X_i X_j \right].
-> $$
->
-> Provided that $i \neq j$, we have
->
-> $$
-> \mathbf{E} \left[ X_i X_j \right]
-> =
-> \mathbf{E} \left[ X_i \right] \mathbf{E} \left[ X_j \right]
-> =
-> \mathbf{E} \left[ X \right]^2
-> =
-> \mu^2.
-> $$
->
-> On the other hand, if $i=j$, then $\mathbf{E} \left[ X_i X_j \right] = \mathbf{E} \left[ X^2 \right]$ and we notice
->
-> $$
-> \sigma^2
-> =
-> \mathbf{E} \left[ (X - \mu)^2 \right]
-> =
-> \mathbf{E} \left[ X^2 \right] - \mu^2,
-> $$
->
-> which gives $\mathbf{E} \left[ X^2 \right] = \sigma^2 + \mu^2$.
->
-> This yields
->
-> $$
-> \mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
-> =
-> \mu^2 \sum_{i,j} A_{ij}
-> +
-> \sigma^2 \sum_i A_{ii}.
-> $$
->
-> <span class="qed">□</span>
+**Little Lemma.**
+{: .lemma-title}
+
+**Little Lemma.**  
+Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
+$X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
+expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
+matrix. Then,
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\mu^2 \Sigma_{\boldsymbol{A}}
++
+\sigma^2 \operatorname{tr}(\boldsymbol{A}).
+$$
+
+:::
+
+*Proof.* $~~$
+Unfortunately, we need to simply expand. It doesn't seem like there is anything more
+clever we could pull off.
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\sum_{i=1}^n \sum_{j=1}^n A_{ij} \mathbf{E} \left[ X_i X_j \right].
+$$
+
+Provided that $i \neq j$, we have
+
+$$
+\mathbf{E} \left[ X_i X_j \right]
+=
+\mathbf{E} \left[ X_i \right] \mathbf{E} \left[ X_j \right]
+=
+\mathbf{E} \left[ X \right]^2
+=
+\mu^2.
+$$
+
+On the other hand, if $i=j$, then $\mathbf{E} \left[ X_i X_j \right] = \mathbf{E} \left[ X^2 \right]$ and we notice
+
+$$
+\sigma^2
+=
+\mathbf{E} \left[ (X - \mu)^2 \right]
+=
+\mathbf{E} \left[ X^2 \right] - \mu^2,
+$$
+
+which gives $\mathbf{E} \left[ X^2 \right] = \sigma^2 + \mu^2$.
+
+This yields
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\mu^2 \sum_{i,j} A_{ij}
++
+\sigma^2 \sum_i A_{ii}.
+$$
+
+<span class="qed">□</span>
 
 
 
