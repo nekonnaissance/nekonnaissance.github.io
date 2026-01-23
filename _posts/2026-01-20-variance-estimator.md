@@ -100,7 +100,9 @@ $$
 
 The discussion above shows that subtracting the mean in the definition of $\widehat{\sigma}^2$ removes exactly the component of $\boldsymbol{X}$ in the $\mathbf{1}$ direction. Let us take a look at a simple case in dimension two.
 
-![Orthogonal projection onto $X_1 + X_2 = 0$](/assets/img/variance/projection_single.png)
+<img src="/assets/img/variance/projection_single.png"
+     alt="Variance estimator animation"
+     style="max-width: 600px; width: 100%; display: block; margin: 1.5em auto;">
 
 Even though the scenario depicted above may appear overly simplistic, it still allows for a few useful observations.
 
@@ -152,7 +154,9 @@ We proceed in the same way as in the previous subsection:
 - To obtain $\widehat{\sigma}^2$, we compute the distance from the origin to the
   projection of $(X_1, X_2)$ onto the line $X_1 + X_2 = 0$.
 
-![Projection experiment for $n=2$](/assets/mu_shift.gif)
+<img src="/assets/mu_shift.gif"
+     alt="Variance estimator animation"
+     style="max-width: 600px; width: 100%; display: block; margin: 1.5em auto;">
 
 As the animation shows, both estimators remain constant as $\mu$ varies.
 This is expected: $\widehat{\sigma}^2_{\mu \text{ known}}$ is proportional to
