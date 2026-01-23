@@ -56,14 +56,79 @@ As we can see, the $-1$ disappears from the denominator. To summarize:
 The second point may seem vague for now. In the next section, we make this intuition more precise.
 
 
+### Orthogonal Projections
 
+When thinking about $\widehat{\sigma}^2$ geometrically, we may view it as the squared Euclidean norm of an $n$-dimensional vector, normalized by $n-1$. If we define the sample vector
 
+$$
+\boldsymbol{X} = [X_1, \dots, X_n]^\top
+$$
 
-## The unbiased estimator
+and the center-of-mass vector
 
-State it cleanly.
-One boxed equation.
-Minimal commentary.
+$$
+\boldsymbol{C} = \overline{X}\,\mathbf{1}
+= [\overline{X}, \dots, \overline{X}]^\top,
+$$
 
-Five Itty Bitty Secrets!
-Hahah! Hahah!
+where $\mathbf{1}$ stands for the all-ones vector, then
+
+$$
+\widehat{\sigma}^2
+= \frac{1}{n-1}\,\lVert \boldsymbol{X} - \boldsymbol{C} \rVert_{\ell^2}^2.
+$$
+
+Here $\lVert \cdot \rVert_{\ell^2}$ denotes the Euclidean norm, the standard way mathematicians refer to “distance from zero”.
+
+Neat. We are interested in the expected distance from $\boldsymbol{X} - \boldsymbol{C}$ to $\mathbf{0}$. Let us notice a simple but important property of this vector.  
+If we define $X_i' = X_i - \overline{X}$ for $i = 1, \dots, n$, then
+
+$$
+\langle \boldsymbol{X} - \boldsymbol{C}, \mathbf{1} \rangle
+= X_1' + \dots + X_n'
+= \left( X_1 - \frac{X_1 + \dots + X_n}{n} \right)
++ \dots
++ \left( X_n - \frac{X_1 + \dots + X_n}{n} \right)
+= 0.
+$$
+
+This means that the random vectors $\boldsymbol{X} - \boldsymbol{C}$ lie in a subspace orthogonal to the all-ones vector $\mathbf{1}$. Since $\boldsymbol{C}$ itself is a multiple of $\mathbf{1}$, subtracting it removes the component of $\boldsymbol{X}$ in the $\mathbf{1}$ direction. Consequently, $\boldsymbol{X} - \boldsymbol{C}$ is the orthogonal projection of $\boldsymbol{X}$ onto the hyperplane
+
+$$
+X_1 + \dots + X_n = 0.
+$$
+
+The discussion above shows that subtracting the mean in the definition of $\widehat{\sigma}^2$ removes exactly the component of $\boldsymbol{X}$ in the $\mathbf{1}$ direction. Let us take a look at a simple case in dimension two.
+
+![Orthogonal projection onto $X_1 + X_2 = 0$](/assets/img/variance/projection_single.png)
+
+Even though the scenario depicted above may appear overly simplistic, it still allows for a few useful observations.
+
+- If $\mu = 0$, the squared distance of the blue point from the origin represents $n\,\widehat{\sigma}^2_{\mu\text{ known}}$. Changing $\mu$ simply translates the point along the $[1,1]^\top$ direction, while its projection remains fixed.
+- Similarly, the squared distance of the red point from the origin represents $(n-1)\,\widehat{\sigma}^2$, where we pretend that the true value of $\mu$ remains unknown.
+
+Basic trigonometry shows that in the $\mu = 0$ case we have
+
+$$
+\lVert \boldsymbol{X} \rVert_{\ell^2}
+= \lVert \boldsymbol{X} - \boldsymbol{C} \rVert_{\ell^2} \cos(\alpha),
+$$
+
+which implies
+
+$$
+n\,\widehat{\sigma}^2_{\mu\text{ known}}
+= (n-1)\,\widehat{\sigma}^2 \cos(\alpha).
+$$
+
+Now observe that replacing $n-1$ with $n$ in the definition of $\widehat{\sigma}^2$ would lead to the highly dubious identity
+
+$$
+\widehat{\sigma}^2_{\mu\text{ known}}
+\stackrel{?!}{=}
+\widehat{\sigma}^2 \cos(\alpha).
+$$
+
+Since $|\cos(\alpha)| \leq 1$, this would systematically push the variance estimate downward. This is precisely the bias we want to avoid.
+
+At this stage, one might suspect that $\frac{1}{n-1}$ is the correct normalization factor when constructing $\widehat{\sigma}^2$. While this is not yet a proof, it already makes clear that using $\frac{1}{n}$ is the wrong choice.
