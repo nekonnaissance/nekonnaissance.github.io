@@ -2,7 +2,7 @@
 
 layout: post
 
-title: "An Unbiased Variance Estimator"
+title: "Geometry of the Unbiased Variance Estimator"
 
 ---
 
