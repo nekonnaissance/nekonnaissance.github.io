@@ -340,7 +340,7 @@ To answer what factor fits an unbiased estimator of variance, we need to calcula
 
 <div class="lemma-box" markdown="1">
 
-**Little Lemma.**
+**Little Lemma**
 
 Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
 $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
@@ -407,7 +407,6 @@ $$
 $$
 
 <span class="qed">□</span>
-</div>
 
 
 In our discussion we are interested in calculating
