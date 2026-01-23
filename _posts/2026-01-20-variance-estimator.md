@@ -45,4 +45,4 @@ One boxed equation.
 Minimal commentary.
 
 Five Itty Bitty Secrets!
-Hahah!
+Hahah! Hahah!
