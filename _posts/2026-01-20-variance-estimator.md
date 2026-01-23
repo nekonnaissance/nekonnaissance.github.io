@@ -184,3 +184,150 @@ To observe a similar effect for larger samples (namely, all measurements cluster
 together while remaining far from the true mean) we would need to be rather unlucky.
 This explains why replacing $\frac{1}{n}$ with $\frac{1}{n-1}$ becomes almost
 irrelevant for large $n$, but crucial when the sample is small.
+
+
+
+
+### Geometric Argument, Made Formal
+
+Let us play around with the expression
+
+$$
+\widehat{\theta} := \sum_{i=1}^n \left( X_i - \overline{X} \right)^2 .
+$$
+
+As we have already seen, the sum looks like the squared $\ell^2$ norm of something. To make this precise, let us reintroduce the following notation.
+
+We define the **sample vector**
+
+$$
+\boldsymbol{X} =
+\begin{bmatrix}
+X_1 \\
+\vdots \\
+X_n
+\end{bmatrix},
+$$
+
+and the **all-ones vector**
+
+$$
+\boldsymbol{1} =
+\begin{bmatrix}
+1 \\
+\vdots \\
+1
+\end{bmatrix}.
+$$
+
+We may then form the vector $\boldsymbol{X} - \boldsymbol{1}\,\overline{X}$. Since $\overline{X}$ is just a scalar, this gives
+
+$$
+\boldsymbol{X} - \boldsymbol{1}\,\overline{X}
+=
+\begin{bmatrix}
+X_1 - \overline{X} \\
+\vdots \\
+X_n - \overline{X}
+\end{bmatrix}.
+$$
+
+The quantity $\widehat{\theta}$ is obtained by summing the squares of the entries of this vector, so
+
+$$
+\widehat{\theta}
+=
+\left\| \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right\|_{\ell^2}^2.
+$$
+
+Equivalently, we may write
+
+$$
+\widehat{\theta}
+=
+\left\langle
+\boldsymbol{X} - \boldsymbol{1}\,\overline{X},
+\boldsymbol{X} - \boldsymbol{1}\,\overline{X}
+\right\rangle
+=
+\left( \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right)^\top
+\left( \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right).
+$$
+
+It is therefore natural to look for a linear operator $\boldsymbol{P}$ such that
+
+$$
+\boldsymbol{P}\boldsymbol{X}
+=
+\boldsymbol{X} - \boldsymbol{1}\,\overline{X}.
+$$
+
+To do so, we express the sample mean as
+
+$$
+\overline{X}
+=
+\frac{1}{n}(X_1 + \dots + X_n)
+=
+\frac{1}{n}\boldsymbol{1}^\top \boldsymbol{X}.
+$$
+
+Substituting this expression yields
+
+$$
+\boldsymbol{X} - \overline{X}\boldsymbol{1}
+=
+\left(
+\boldsymbol{I}
+-
+\frac{1}{n}\boldsymbol{1}\boldsymbol{1}^\top
+\right)\boldsymbol{X}.
+$$
+
+We therefore define
+
+$$
+\boldsymbol{P}
+=
+\boldsymbol{I}
+-
+\frac{1}{n}\boldsymbol{1}\boldsymbol{1}^\top.
+$$
+
+Explicitly, this matrix takes the form
+
+$$
+\boldsymbol{P}
+=
+\begin{bmatrix}
+1-\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
+-\frac{1}{n} & 1-\frac{1}{n} & \cdots & -\frac{1}{n} \\
+\vdots & \vdots & \ddots & \vdots \\
+-\frac{1}{n} & -\frac{1}{n} & \cdots & 1-\frac{1}{n}
+\end{bmatrix}.
+$$
+
+Using this operator, we may rewrite
+
+$$
+\widehat{\theta}
+=
+(\boldsymbol{P}\boldsymbol{X})^\top(\boldsymbol{P}\boldsymbol{X})
+=
+\boldsymbol{X}^\top \boldsymbol{P}^\top \boldsymbol{P}\boldsymbol{X}.
+$$
+
+The matrix $\boldsymbol{P}$ has two key properties:
+
+1. $\boldsymbol{P}$ is symmetric, so $\boldsymbol{P}^\top = \boldsymbol{P}$.
+2. $\boldsymbol{P}$ is idempotent, meaning $\boldsymbol{P}^2 = \boldsymbol{P}$.
+
+In other words, $\boldsymbol{P}$ is an orthogonal projection. Hence,
+
+$$
+\widehat{\theta}
+=
+\boldsymbol{X}^\top \boldsymbol{P}\boldsymbol{X}.
+$$
+
+To determine the correct normalization for an unbiased variance estimator, we now compute the expected value of this expression.
