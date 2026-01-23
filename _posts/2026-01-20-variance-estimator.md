@@ -129,6 +129,7 @@ $$
 \widehat{\sigma}^2 \cos(\alpha).
 $$
 
-Since $|\cos(\alpha)| \leq 1$, this would systematically push the variance estimate downward. This is precisely the bias we want to avoid.
+Since $\lvert \cos(\alpha) \rvert \leq 1$, this would systematically push the variance estimate downward.
+This is precisely the bias we want to avoid.
 
 At this stage, one might suspect that $\frac{1}{n-1}$ is the correct normalization factor when constructing $\widehat{\sigma}^2$. While this is not yet a proof, it already makes clear that using $\frac{1}{n}$ is the wrong choice.
