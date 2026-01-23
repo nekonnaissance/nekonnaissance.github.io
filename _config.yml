@@ -5,3 +5,5 @@ markdown: kramdown
 
 kramdown:
   math_engine: null
+  input: kramdown
+  syntax_highlighter: rouge

@@ -336,12 +336,12 @@ $$
 To answer what factor fits an unbiased estimator of variance, we need to calculate the expected value of the expressions above. To this end, we need a supplementary result.
 
 
-::: {.lemma-box}
 
-**Little Lemma.**
+{::options .lemma-box}
+
+**Lemma.**
 {: .lemma-title}
 
-**Little Lemma.**  
 Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
 $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
 expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
@@ -350,14 +350,16 @@ matrix. Then,
 $$
 \mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
 =
-\mu^2 \Sigma_{\boldsymbol{A}}
-+
-\sigma^2 \operatorname{tr}(\boldsymbol{A}).
+\mu^2 \Sigma_{\boldsymbol{A}} + \sigma^2 \operatorname{tr}(\boldsymbol{A}),
 $$
 
-:::
+where $\Sigma_{\boldsymbol{A}}$ stands for the sum of all the entries of
+$\boldsymbol{A}$ and $\operatorname{tr}(\boldsymbol{A})$ for the trace of
+$\boldsymbol{A}$.
 
-*Proof.* $~~$
+**Proof.**
+{: .proof-title}
+
 Unfortunately, we need to simply expand. It doesn't seem like there is anything more
 clever we could pull off.
 
@@ -379,7 +381,8 @@ $$
 \mu^2.
 $$
 
-On the other hand, if $i=j$, then $\mathbf{E} \left[ X_i X_j \right] = \mathbf{E} \left[ X^2 \right]$ and we notice
+On the other hand, if $i=j$, then
+$\mathbf{E} \left[ X_i X_j \right] = \mathbf{E} \left[ X^2 \right]$ and we notice
 
 $$
 \sigma^2
@@ -391,17 +394,21 @@ $$
 
 which gives $\mathbf{E} \left[ X^2 \right] = \sigma^2 + \mu^2$.
 
-This yields
+This gives us
 
 $$
 \mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
 =
-\mu^2 \sum_{i,j} A_{ij}
+\mu^2 \sum_{i=1}^n \sum_{j=1}^n A_{ij}
 +
-\sigma^2 \sum_i A_{ii}.
+\sigma^2 \sum_{i=1}^n A_{ii}
+=
+\mu^2 \Sigma_{\boldsymbol{A}} + \sigma^2 \operatorname{tr}(\boldsymbol{A}).
 $$
 
 <span class="qed">□</span>
+
+{:/options}
 
 
 
