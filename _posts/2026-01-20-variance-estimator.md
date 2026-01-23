@@ -139,7 +139,7 @@ At this stage, one might suspect that $\frac{1}{n-1}$ is the correct normalizati
 
 
 
-## More Intuition – Case $n = 2$
+## More Intuition: Case $n = 2$
 
 In this experiment we sample various values of $\mu$ from the interval $[-3, 3]$.
 For each of these means we draw $(X_1, X_2)$ pairs $500$ times, where
@@ -340,10 +340,11 @@ To answer what factor fits an unbiased estimator of variance, we need to calcula
 
 
 
-
+**Little Lemma.** 
 <div class="lemma-box">
-  <div class="lemma-title">Little Lemma.</div>
+  <div class="lemma-title"></div>
 
+  
   Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
   $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
   expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
