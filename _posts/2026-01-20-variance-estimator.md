@@ -341,8 +341,6 @@ To answer what factor fits an unbiased estimator of variance, we need to calcula
 <div class="lemma-box" markdown="1">
 
 **Little Lemma.**
-{: .lemma-title}
-
 
 Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
 $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
@@ -355,12 +353,12 @@ $$
 \mu^2 \Sigma_{\boldsymbol{A}} + \sigma^2 \operatorname{tr}(\boldsymbol{A}),
 $$
 
-where $\Sigma_{\boldsymbol{A}}$ stands for the sum of all the entries of
-$\boldsymbol{A}$ and $\operatorname{tr}(\boldsymbol{A})$ for the trace of
-$\boldsymbol{A}$.
+where $\Sigma_{\boldsymbol{A}}$ stands for the sum of all the entries of $\boldsymbol{A}$
+and $\operatorname{tr}(\boldsymbol{A})$ for the trace of $\boldsymbol{A}$.
 
-**Proof.**
-{: .proof-title}
+</div>
+
+*Proof.*
 
 Unfortunately, we need to simply expand. It doesn't seem like there is anything more
 clever we could pull off.

@@ -4,35 +4,19 @@
 @import "minima";
 
 /* =========================
-   Lemma / Theorem boxes
+   Lemma box (statement only)
    ========================= */
 
 .lemma-box {
-  position: relative;
   border: 1.5px solid #000;
-  padding: 1.4em 1.2em 1.2em;
-  margin: 2em 0;
+  padding: 1.2em 1.2em;
+  margin: 2em 0 1em 0;
   background: #fff;
   color: #000;
   font-style: normal;
 }
 
-/* Black label, Tao-style */
-.lemma-box .lemma-title {
-  position: absolute;
-  top: -0.9em;
-  left: 1em;
-
-  background: #000;
-  color: #fff;
-
-  padding: 0.25em 0.6em;
-  font-weight: 600;
-  font-size: 0.9em;
-  font-style: normal;
-}
-
-/* Reset Minima’s tendency to whisper */
+/* Make sure Minima doesn't gray it out */
 .lemma-box p,
 .lemma-box li {
   color: #000;
@@ -41,16 +25,4 @@
 
 .lemma-box em {
   font-style: italic;
-}
-
-/* Proof heading */
-.lemma-box .proof-title {
-  font-weight: 600;
-  margin-top: 1em;
-}
-
-/* QED symbol */
-.lemma-box .qed {
-  float: right;
-  font-size: 1.05em;
 }
