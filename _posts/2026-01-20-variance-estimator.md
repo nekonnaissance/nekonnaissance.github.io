@@ -340,11 +340,10 @@ To answer what factor fits an unbiased estimator of variance, we need to calcula
 
 
 
-**Little Lemma.** 
-<div class="lemma-box">
-  <div class="lemma-title"></div>
 
-  
+<div class="lemma-box">
+  <div class="lemma-title">**Little Lemma.**</div>
+
   Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
   $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
   expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
