@@ -190,28 +190,25 @@ irrelevant for large $n$, but crucial when the sample is small.
 
 ### Geometric Argument, Made Formal
 
-Let us play around with the expression
+Let's play around a bit with the expression
 
 $$
-\widehat{\theta} := \sum_{i=1}^n \left( X_i - \overline{X} \right)^2 .
+\widehat{\theta} := \sum_{i=1}^n 
+\left( X_i - \overline{X} \right)^2 ,
 $$
 
-As we have already seen, the sum looks like the squared $\ell^2$ norm of something. To make this precise, let us reintroduce the following notation.
-
-We define the **sample vector**
+As we have already seen, the sum looks like an $\ell^2$ norm of something. To make this precise, let's re-introduce the following notation:
 
 $$
+\text{the sample vector}\quad
 \boldsymbol{X} =
 \begin{bmatrix}
-X_1 \\
+X_{1} \\
 \vdots \\
-X_n
+X_{n}
 \end{bmatrix},
-$$
-
-and the **all-ones vector**
-
-$$
+\qquad
+\text{the all-ones vector}\quad
 \boldsymbol{1} =
 \begin{bmatrix}
 1 \\
@@ -220,84 +217,90 @@ $$
 \end{bmatrix}.
 $$
 
-We may then form the vector $\boldsymbol{X} - \boldsymbol{1}\,\overline{X}$. Since $\overline{X}$ is just a scalar, this gives
+We can then form the vector $\boldsymbol{X} - \boldsymbol{1}\overline{X}$, noting that $\overline{X}$ is just a scalar:
 
 $$
-\boldsymbol{X} - \boldsymbol{1}\,\overline{X}
+\boldsymbol{X} - \boldsymbol{1} \overline{X} 
 =
 \begin{bmatrix}
-X_1 - \overline{X} \\
+X_{1} - \overline{X}  \\
 \vdots \\
-X_n - \overline{X}
+X_{n} - \overline{X} 
 \end{bmatrix}.
 $$
 
-The quantity $\widehat{\theta}$ is obtained by summing the squares of the entries of this vector, so
+We can now see that $\widehat{\theta}$ is obtained by summing the squares of the entries of the vector above. That gives us
 
 $$
 \widehat{\theta}
 =
-\left\| \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right\|_{\ell^2}^2.
+\| \boldsymbol{X} - \boldsymbol{1} \overline{X} \|_{\ell^2}^2.
 $$
 
-Equivalently, we may write
+This observation also allows us to rewrite $\widehat{\theta}$ in a more compact way, more suitable for matrix calculations:
 
 $$
 \widehat{\theta}
 =
-\left\langle
-\boldsymbol{X} - \boldsymbol{1}\,\overline{X},
-\boldsymbol{X} - \boldsymbol{1}\,\overline{X}
-\right\rangle
+\langle \boldsymbol{X} - \boldsymbol{1} \overline{X},
+\boldsymbol{X} - \boldsymbol{1} \overline{X} \rangle
 =
-\left( \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right)^\top
-\left( \boldsymbol{X} - \boldsymbol{1}\,\overline{X} \right).
+\left( \boldsymbol{X} - \boldsymbol{1} \overline{X} \right)^\top
+\left( \boldsymbol{X} - \boldsymbol{1} \overline{X} \right).
 $$
 
-It is therefore natural to look for a linear operator $\boldsymbol{P}$ such that
+We notice that the expression $\boldsymbol{X} - \boldsymbol{1} \overline{X}$ is meaningful in some way. It would be neat to have a linear operator $\boldsymbol{P}$ that satisfies
 
 $$
-\boldsymbol{P}\boldsymbol{X}
+\boldsymbol{P} \boldsymbol{X}
 =
-\boldsymbol{X} - \boldsymbol{1}\,\overline{X}.
+\boldsymbol{X} - \boldsymbol{1} \overline{X},
 $$
 
-To do so, we express the sample mean as
+so we could study its properties and hopefully get some insights. To get there, we need to describe $\overline{X}$ in terms of $\boldsymbol{X}$:
 
 $$
 \overline{X}
 =
-\frac{1}{n}(X_1 + \dots + X_n)
+\frac{1}{n} \left( X_1 + \dots + X_n \right)
 =
-\frac{1}{n}\boldsymbol{1}^\top \boldsymbol{X}.
+\frac{1}{n} \boldsymbol{1}^\top \boldsymbol{X}.
 $$
 
-Substituting this expression yields
+Of course, the dot product above could be also described as $\boldsymbol{X}^\top \boldsymbol{1}$, but we need $\boldsymbol{X}$ itself not to be transposed. Then,
 
 $$
-\boldsymbol{X} - \overline{X}\boldsymbol{1}
+\boldsymbol{X} - \overline{X} \boldsymbol{1}
 =
-\left(
-\boldsymbol{I}
+\boldsymbol{X}
 -
-\frac{1}{n}\boldsymbol{1}\boldsymbol{1}^\top
-\right)\boldsymbol{X}.
+\frac{1}{n} \boldsymbol{1} \boldsymbol{1}^\top \boldsymbol{X}
+=
+\underbrace{
+\left( \mathbf{id} - \frac{1}{n} \boldsymbol{1}\boldsymbol{1}^\top \right)
+}_{\boldsymbol{P}}
+\boldsymbol{X}.
 $$
 
-We therefore define
+Just for the record, the matrix $\boldsymbol{P}$ is:
 
 $$
 \boldsymbol{P}
 =
-\boldsymbol{I}
+\begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{bmatrix}
 -
-\frac{1}{n}\boldsymbol{1}\boldsymbol{1}^\top.
-$$
-
-Explicitly, this matrix takes the form
-
-$$
-\boldsymbol{P}
+\frac{1}{n}
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+1 & 1 & \cdots & 1 \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & 1 & \cdots & 1
+\end{bmatrix}
 =
 \begin{bmatrix}
 1-\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
@@ -307,27 +310,146 @@ $$
 \end{bmatrix}.
 $$
 
-Using this operator, we may rewrite
+Fine, we succeeded in creating an operator $\boldsymbol{P}$ of the desired property. We get
 
 $$
 \widehat{\theta}
 =
-(\boldsymbol{P}\boldsymbol{X})^\top(\boldsymbol{P}\boldsymbol{X})
+(\boldsymbol{P} \boldsymbol{X})^\top (\boldsymbol{P} \boldsymbol{X})
 =
-\boldsymbol{X}^\top \boldsymbol{P}^\top \boldsymbol{P}\boldsymbol{X}.
+\boldsymbol{X}^\top \boldsymbol{P}^\top \boldsymbol{P} \boldsymbol{X}.
 $$
 
-The matrix $\boldsymbol{P}$ has two key properties:
+The matrix/operator $\boldsymbol{P}$ has two critical properties:
 
-1. $\boldsymbol{P}$ is symmetric, so $\boldsymbol{P}^\top = \boldsymbol{P}$.
-2. $\boldsymbol{P}$ is idempotent, meaning $\boldsymbol{P}^2 = \boldsymbol{P}$.
+1. It is symmetric, so $\boldsymbol{P}^\top = \boldsymbol{P}$.
+2. It effectively subtracts the mean (or the center of mass) from a vector. Doing it twice changes nothing, because the mean has already been removed after the first pass. Hence, $\boldsymbol{P}^2 = \boldsymbol{P}$.
 
-In other words, $\boldsymbol{P}$ is an orthogonal projection. Hence,
+In other words, it's an orthogonal projection (as already observed in the previous sections). Thus, we get
 
 $$
 \widehat{\theta}
 =
-\boldsymbol{X}^\top \boldsymbol{P}\boldsymbol{X}.
+\boldsymbol{X}^\top \boldsymbol{P} \boldsymbol{X}.
 $$
 
-To determine the correct normalization for an unbiased variance estimator, we now compute the expected value of this expression.
+To answer what factor fits an unbiased estimator of variance, we need to calculate the expected value of the expressions above. To this end, we need a supplementary result.
+
+**Lemma.**  
+Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$ matrix. Then,
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\mu^2 \Sigma_{\boldsymbol{A}}
++
+\sigma^2 \operatorname{tr}(\boldsymbol{A}).
+$$
+
+**Proof.**  
+Unfortunately, we need to simply expand. It doesn't seem like there is anything more clever we could pull off.
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\sum_{i=1}^n \sum_{j=1}^n A_{ij} \mathbf{E} \left[ X_i X_j \right].
+$$
+
+Provided that $i \neq j$, we have
+
+$$
+\mathbf{E} \left[ X_i X_j \right]
+=
+\mathbf{E} \left[ X_i \right] \mathbf{E} \left[ X_j \right]
+=
+\mathbf{E} \left[ X \right]^2
+=
+\mu^2.
+$$
+
+On the other hand, if $i=j$, then $\mathbf{E} \left[ X_i X_j \right] = \mathbf{E} \left[ X^2 \right]$ and we notice
+
+$$
+\sigma^2
+=
+\mathbf{E} \left[ (X - \mu)^2 \right]
+=
+\mathbf{E} \left[ X^2 \right] - \mu^2,
+$$
+
+which gives $\mathbf{E} \left[ X^2 \right] = \sigma^2 + \mu^2$.
+
+This yields
+
+$$
+\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{A} \boldsymbol{X} \right]
+=
+\mu^2 \sum_{i,j} A_{ij}
++
+\sigma^2 \sum_i A_{ii}.
+$$
+
+In our discussion we are interested in calculating
+$\mathbf{E}\!\left[ \boldsymbol{X}^\top \boldsymbol{P} \boldsymbol{X} \right]$.
+This turns out to be quite simple, because the sum of all the entries vanishes. We thus have
+
+$$
+\mathbf{E} [ \widehat{\theta} ]
+=
+\sigma^2 \operatorname{tr}(\boldsymbol{P})
+=
+(n-1)\sigma^2.
+$$
+
+That's all. To make the estimator unbiased, we just divide $\widehat{\theta}$ by $n-1$.
+
+
+
+
+### Appendix: What if $\mu$ is known?
+
+Let us follow the same geometric argument. First, we note that
+
+$$
+\mathbf{E}[\widehat{\sigma}^2_{\text{$\mu$ known}}]
+=
+\mathbf{E}[\boldsymbol{X}^2] - \mu^2.
+$$
+
+We also observe that for the sample vector $\boldsymbol{X}$ it holds that
+
+$$
+\mathbf{E}[\boldsymbol{X}^2]
+=
+\frac{1}{n} \| \boldsymbol{X} \|_{\ell^2}
+=
+\frac{1}{n} \boldsymbol{X}^\top \boldsymbol{X}.
+$$
+
+In other words, we now deal with $\boldsymbol{X}^\top \boldsymbol{X}$ instead of
+$\boldsymbol{X}^\top \boldsymbol{P} \boldsymbol{X}$. The projection matrix
+$\boldsymbol{P}$ got replaced by the identity matrix $\mathbf{id}$.
+Applying Little Lemma, we obtain
+
+$$
+\frac{1}{n}
+\mathbf{E}\!\left[
+\boldsymbol{X}^\top \boldsymbol{X}
+\right]
+=
+\mu^2 + \sigma^2,
+$$
+
+since $\text{tr}(\mathbf{id}) = n$. This yields
+
+$$
+\mathbf{E}[\widehat{\sigma}^2_{\text{$\mu$ known}}]
+=
+\mu^2 + \sigma^2 - \mu^2
+=
+\sigma^2.
+$$
+
+The means cancel out, as they should, since the variance has nothing to do with
+$\mu$. The estimator $\widehat{\sigma}^2_{\mu\ \text{known}}$ is unbiased, and the
+factor $n-1$ simply does not show up here.
