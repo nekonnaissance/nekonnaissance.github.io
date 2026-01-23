@@ -1,9 +1,10 @@
 title: "Paweł Lewulis"
 description: "Math, quant stuff, and other distractions."
+
 theme: minima
+
 markdown: kramdown
 
 kramdown:
-  math_engine: null
   input: kramdown
   syntax_highlighter: rouge

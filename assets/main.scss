@@ -10,10 +10,14 @@
 }
 
 .lemma-box em {
-  font-style: italic; /* only actual emphasis stays italic */
+  font-style: italic;
 }
 
 .lemma-box .lemma-title {
-  font-style: normal;
+  display: inline-block; 
+  background: #000;
   color: #fff;
+  padding: 0.25em 0.6em; 
+  font-style: normal;
+  margin-bottom: 0.8em; 
 }
