@@ -2,3 +2,6 @@ title: "Name Surname"
 description: "Math, quant, and other distractions."
 theme: minima
 markdown: kramdown
+
+kramdown:
+  math_engine: null
