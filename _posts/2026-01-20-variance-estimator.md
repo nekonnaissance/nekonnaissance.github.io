@@ -8,7 +8,7 @@ title: "Geometry of the Unbiased Variance Estimator"
 
 
 
-The formula for the unbiased variance estimator is well known:
+The unbiased variance estimator is given by the well-known formula:
 
 $$
 \widehat{\sigma}^2 := \frac{1}{n-1} \sum_{i=1}^n \left( X_i - \overline{X} \right)^2 ,
@@ -18,7 +18,9 @@ where $X_1,\dots,X_n$ are independent draws from the same distribution and $\ove
 
 Every so often, someone in the room eventually asks:
 
-> *Why do we have $n-1$ in the denominator? The expression looks almost like an average of $n$ squared deviations, so why isn't the denominator simply $n$?*
+<div class="aside" markdown="1">
+*Why do we have $n-1$ in the denominator? The expression looks almost like an average of $n$ squared deviations, so why isn't the denominator simply $n$?*
+</div>
 
 There are two answers one usually hears:
 
@@ -340,9 +342,7 @@ To answer what factor fits an unbiased estimator of variance, we need to calcula
 
 <div class="lemma-box" markdown="1">
 
-**Little Lemma**
-
-Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
+**Little Lemma** $~$ Let $\boldsymbol{X}$ be a random vector of independent entries of length $n$ such that
 $X_i \sim X$ for all the indices $i$, where $X$ is a random variable with well defined
 expected value $\mu$ and variance $\sigma^2$. Let $\boldsymbol{A}$ be an $n \times n$
 matrix. Then,
@@ -358,9 +358,7 @@ and $\operatorname{tr}(\boldsymbol{A})$ for the trace of $\boldsymbol{A}$.
 
 </div>
 
-*Proof.*
-
-Unfortunately, we need to simply expand. It doesn't seem like there is anything more
+*Proof.* $~$ Unfortunately, we need to simply expand. It doesn't seem like there is anything more
 clever we could pull off.
 
 $$
