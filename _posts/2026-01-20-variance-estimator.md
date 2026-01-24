@@ -111,21 +111,21 @@ Even though the scenario depicted above may appear overly simplistic, it still a
 - If $\mu = 0$, the squared distance of the blue point from the origin represents $n\,\widehat{\sigma}^2_{\mu\text{ known}}$. Changing $\mu$ simply translates the point along the $[1,1]^\top$ direction, while its projection remains fixed.
 - Similarly, the squared distance of the red point from the origin represents $(n-1)\,\widehat{\sigma}^2$, where we pretend that the true value of $\mu$ remains unknown.
 
-Basic trigonometry shows that in the $\mu = 0$ case we have
+Basic trigonometry shows that we have
 
 $$
 \lVert \boldsymbol{X} \rVert_{\ell^2}
 = \lVert \boldsymbol{X} - \boldsymbol{C} \rVert_{\ell^2} \cos(\alpha),
 $$
 
-which implies
+which in the $\mu = 0$ case implies
 
 $$
 n\,\widehat{\sigma}^2_{\mu\text{ known}}
 = (n-1)\,\widehat{\sigma}^2 \cos(\alpha).
 $$
 
-Now observe that replacing $n-1$ with $n$ in the definition of $\widehat{\sigma}^2$ would lead to the highly dubious identity
+Now observe that replacing $n-1$ with $n$ in the definition of $\widehat{\sigma}^2$ would lead to a highly dubious identity
 
 $$
 \widehat{\sigma}^2_{\mu\text{ known}}
@@ -133,21 +133,20 @@ $$
 \widehat{\sigma}^2 \cos(\alpha).
 $$
 
-Since $\lvert \cos(\alpha) \rvert \leq 1$, this would systematically push the variance estimate downward.
-This is precisely the bias we want to avoid.
+Since $\lvert \cos(\alpha) \rvert \leq 1$, this would systematically push the variance estimate downward. This is precisely the bias we want to avoid.
 
-At this stage, one might suspect that $\frac{1}{n-1}$ is the correct normalization factor when constructing $\widehat{\sigma}^2$. While this is not yet a proof, it already makes clear that using $\frac{1}{n}$ is the wrong choice.
+While this is not yet a proof, it is already clear that using $\frac{1}{n}$ is a wrong choice of the normalization factor when constructing $\widehat{\sigma}^2$.
 
 
 
 
 ## More Intuition: Case $n = 2$
 
-In this experiment we sample various values of $\mu$ from the interval $[-3, 3]$.
-For each of these means we draw $(X_1, X_2)$ pairs $500$ times, where
+In this experiment we sample $\mu$ from the interval $[-3, 3]$.
+For this mean we draw $(X_1, X_2)$ pairs $500$ times, where
 $X_1$ and $X_2$ come from the normal distribution $\mathcal{N}(\mu, 1)$.
-For each pair, we estimate the variance by computing either
-$\widehat{\sigma}^2$ or $\widehat{\sigma}^2_{\mu \text{ known}}$.
+For each pair, we estimate the variance by computing both
+$\widehat{\sigma}^2$ and $\widehat{\sigma}^2_{\mu \text{ known}}$.
 
 We proceed in the same way as in the previous subsection:
 
