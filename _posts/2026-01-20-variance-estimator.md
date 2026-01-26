@@ -95,7 +95,7 @@ $$
 = 0.
 $$
 
-This means that the random vectors $\boldsymbol{X} - \boldsymbol{C}$ are perpedincular to the all-one vector $\mathbf{1}$. Notice that $\boldsymbol{C}$ itself is a multiple of $\mathbf{1}$. Consequently, $\boldsymbol{X} - \boldsymbol{C}$ is the orthogonal projection of $\boldsymbol{X}$ onto the hyperplane defined by the equation
+This shows that the random vectors $\boldsymbol{X}-\boldsymbol{C}$ are perpendicular to the all-ones vector $\mathbf{1}$. Since $\boldsymbol{C}$ itself is a scalar multiple of $\mathbf{1}$, it follows that $\boldsymbol{X}-\boldsymbol{C}$ is the orthogonal projection of $\boldsymbol{X}$ onto the hyperplane
 
 $$
 x_1 + \dots + x_n = 0.
