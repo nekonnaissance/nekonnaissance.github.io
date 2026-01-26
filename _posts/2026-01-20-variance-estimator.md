@@ -55,7 +55,7 @@ As we can see, the $-1$ disappears from the denominator. To summarize:
 - For $n = 1$, it makes sense that the variance cannot be estimated unless $\mu$ is known.
 - Replacing $n$ with $n - 1$ in the denominator can be viewed as a premium paid for not knowing the exact value of $\mu$.
 
-The second point may seem vague for now. In the next section, we make this intuition more precise.
+The second point may seem vague for now. In the following sections, we make this intuition more precise.
 
 
 ### Orthogonal Projections
@@ -82,25 +82,26 @@ $$
 
 Here $\lVert \cdot \rVert_{\ell^2}$ denotes the Euclidean norm, the standard way mathematicians refer to “distance from zero”.
 
-Neat. We are interested in the expected distance from $\boldsymbol{X} - \boldsymbol{C}$ to $\mathbf{0}$. Let us notice a simple but important property of this vector.  
-If we define $X_i' = X_i - \overline{X}$ for $i = 1, \dots, n$, then
+Neat. We are interested in the expected distance from $\boldsymbol{X} - \boldsymbol{C}$ to $\mathbf{0}$. Let us notice a simple but important property of this vector. If we define $X_i' = X_i - \overline{X}$ for $i = 1, \dots, n$, then
 
 $$
 \langle \boldsymbol{X} - \boldsymbol{C}, \mathbf{1} \rangle
-= X_1' + \dots + X_n'
-= \left( X_1 - \frac{X_1 + \dots + X_n}{n} \right)
+= X_1' + \dots + X_n'=
+$$
+$$
+\left( X_1 - \frac{X_1 + \dots + X_n}{n} \right)
 + \dots
 + \left( X_n - \frac{X_1 + \dots + X_n}{n} \right)
 = 0.
 $$
 
-This means that the random vectors $\boldsymbol{X} - \boldsymbol{C}$ lie in a subspace orthogonal to the all-ones vector $\mathbf{1}$. Since $\boldsymbol{C}$ itself is a multiple of $\mathbf{1}$, subtracting it removes the component of $\boldsymbol{X}$ in the $\mathbf{1}$ direction. Consequently, $\boldsymbol{X} - \boldsymbol{C}$ is the orthogonal projection of $\boldsymbol{X}$ onto the hyperplane
+This means that the random vectors $\boldsymbol{X} - \boldsymbol{C}$ are perpedincular to the all-one vector $\mathbf{1}$. Notice that $\boldsymbol{C}$ itself is a multiple of $\mathbf{1}$. Consequently, $\boldsymbol{X} - \boldsymbol{C}$ is the orthogonal projection of $\boldsymbol{X}$ onto the hyperplane defined by the equation
 
 $$
-X_1 + \dots + X_n = 0.
+x_1 + \dots + x_n = 0.
 $$
 
-The discussion above shows that subtracting the mean in the definition of $\widehat{\sigma}^2$ removes exactly the component of $\boldsymbol{X}$ in the $\mathbf{1}$ direction. Let us take a look at a simple case in dimension two.
+Let us take a look at a simple case in dimension two.
 
 <img src="/assets/img/variance/projection_single.png"
      alt="Variance estimator animation"
